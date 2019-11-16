@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Presidente</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style type="text/css" media="screen">
+			body {
+				overflow: hidden;
+			}
+			video {
+				height: 100vh;
+				width: 100vw;
+			}
+		</style>
+	</head>
+	<body>
+		<video id="vid" autoplay loop muted="muted">
+		</video>
+
+		<script>
+			function addSourceToVideo(element, src, type) {
+				var source = document.createElement('source');
+
+				source.src = src;
+				source.type = type;
+
+				element.appendChild(source);
+			}
+
+			var video = document.getElementById('vid');
+
+			document.body.appendChild(video);
+			var WindowWidth = window.innerWidth;
+
+			if (WindowWidth < 650) {
+				addSourceToVideo(video, 'media/movil_intro.mp4', 'video/mp4');
+			} else {
+				addSourceToVideo(video, 'media/web_intro.mp4', 'video/mp4');
+			}
+		</script>
+	</body>
+</html>
+
