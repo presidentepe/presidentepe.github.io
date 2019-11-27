@@ -1,45 +1,162 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>Presidente</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<style type="text/css" media="screen">
-			video {
-				position: absolute;
-				z-index: -1;
-				top: 0;
-				left: 0;
-				width: 100%; 
-				height: 100%;
-				object-fit: fill;
-			}
-		</style>
-	</head>
-	<body>
-		<video id="vid" autoplay loop muted="muted">
-		</video>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Presidente</title>
+</head>
+<body>
+    <style>
+        * {padding: 0; margin: 0; box-sizing: border-box;}
+        body {
+            background-color: #B3DAD8;
+            height: 100vh;
+            width: 100vw;
+            font-family: GoshaSans;
+        }
 
-		<script>
-			function addSourceToVideo(element, src, type) {
-				var source = document.createElement('source');
+        * {
+            font-size: 1em;
+            text-align: center;
+        }
 
-				source.src = src;
-				source.type = type;
+        body div {
+            border: 1px solid black;
+        }
 
-				element.appendChild(source);
-			}
+        .main-container {
+            height: 100%;
+            display: grid;
+            grid-template-rows: 50px 2fr 1fr 70px 70px;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-areas: 
+                "header header"
+                "main-left main-right"
+                "main-left main-brand"
+                "main-email main-email"
+                "main-number main-number"
+            ;
+        }
 
-			var video = document.getElementById('vid');
+        .main-header {
+            grid-area: header;
+        }
 
-			document.body.appendChild(video);
-			var WindowWidth = window.innerWidth;
+        /* .main-header img{
+            height: 70px;
+        } */
 
-			if (WindowWidth < 650) {
-				addSourceToVideo(video, 'media/movil_intro.mp4', 'video/mp4');
-			} else {
-				addSourceToVideo(video, 'media/web_intro.mp4', 'video/mp4');
-			}
-		</script>
-	</body>
+        .main-content {
+            grid-area: main-left;
+            font-family: GoshaSans;
+        }
+
+        .main-logo {
+            grid-area: main-right;
+        }
+
+        .main-logo img {
+            width: 80%;
+            height: auto;
+        }
+
+        .main-brand {
+            grid-area: main-brand;
+            font-family: stenberg_itc;
+            font-size: 1.5em;;
+        }
+        .main-email {
+            grid-area: main-email;
+        }
+
+        .main-number {
+            grid-area: main-number;
+        }
+
+        .img {
+            height: 100%;
+            width: 100%;
+        }
+
+        .logo {
+            max-width: auto;
+            max-height: 80%;
+        }
+
+        .flex-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @font-face {
+            font-family: stenberg_itc;
+            src: url("./Fonts/stenberg_itc.ttf")
+        }
+
+        @font-face {
+            font-family: GoshaSans;
+            src: url("./Fonts/GoshaSans-Light.otf");
+        }
+
+        @media screen and (min-width: 768px) {
+            .main-container {
+                grid-template-rows: 80px 2fr 70px 70px;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-areas: 
+                    "header header header"
+                    "main-left main-left main-right"
+                    "main-left main-left main-right"
+                    "main-email main-number main-brand"
+            ;
+            }
+
+            .logo {
+                transform: rotateZ(-90deg);
+            }
+
+            .on-desktop {
+                display: flex;
+            }
+
+            .on-mobile {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .on-desktop {
+                display: none;
+            }
+
+            .on-mobile {
+                display: flex;
+            }
+        }
+    </style>
+
+    <div class="main-container">
+        <div class="main-header">
+            <img class="img on-mobile" src="./letras_movil_final.gif" alt="">
+            <img class="img on-desktop" src="./letras_web_final.gif">
+        </div>
+        <div class="main-content flex-container">
+            <img class="logo" src="./Logos/presidente-logo-v.png" alt="">
+        </div>
+        <div class="main-logo flex-container">
+            <img class="img on-mobile" src="./iso_movil_final.gif" alt="">
+            <img class="img on-desktop" src="./iso_web_final.gif" alt="">
+        </div>
+        <div class="main-brand flex-container">
+            <h1>CASA DE CONTENIDO</h1>
+        </div>
+        <div class="main-email flex-container">
+            <h1 style="font-weight: lighter;">hola@presidente.pe</h1>
+        </div>
+        <div class="main-number flex-container">
+            <span>+51 947 360 500</span>
+        </div>
+    </div>
+</body>
 </html>
-
