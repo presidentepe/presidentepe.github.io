@@ -41,6 +41,16 @@
 
         .main-header {
             grid-area: header;
+            background-image: url("./Logos/en-construccion.png");
+            background-repeat: repeat-x;
+            background-size: 70% auto;
+            background-clip: padding-box;
+            animation: slide 20s linear infinite;
+        }
+
+        @-webkit-keyframes slide {
+            from { background-position: center center; }
+            to { background-position: -600px center; }
         }
 
         /* .main-header img{
@@ -101,6 +111,10 @@
         }
 
         @media screen and (min-width: 768px) {
+            .main-header {
+                background-size: 20% auto;
+            }
+
             .main-container {
                 grid-template-rows: 80px 2fr 70px 70px;
                 grid-template-columns: repeat(3, 1fr);
@@ -123,6 +137,11 @@
             .on-mobile {
                 display: none;
             }
+
+            @-webkit-keyframes slide {
+                from { background-position: center center; }
+                to { background-position: -2000px center; }
+            }
         }
 
         @media screen and (max-width: 768px) {
@@ -137,9 +156,7 @@
     </style>
 
     <div class="main-container">
-        <div class="main-header">
-            <img class="img on-mobile" src="./letras_movil_final.gif" alt="">
-            <img class="img on-desktop" src="./letras_web_final.gif">
+        <div class="main-header flex-container">
         </div>
         <div class="main-content flex-container">
             <img class="logo" src="./Logos/presidente-logo-v.png" alt="">
